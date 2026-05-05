@@ -19,10 +19,7 @@ def prepare_params():
 
 
 def mujoco_render(env, *args, **kwargs):
-    if "mujoco_py" in str(type(env.sim)):
-        env.render(*args, **kwargs)
-    else:
-        env.sim.renderer.render_to_window(*args, **kwargs)
+    env.unwrapped.mj_renderer. render_to_window(*args, **kwargs)
 
 
 @contextmanager

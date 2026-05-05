@@ -55,13 +55,13 @@ class Sequential:
         self._max_episode_steps = max_episode_steps
         self.observation_space = self.environments[0].observation_space
         self.action_space = self.environments[0].action_space
-        self.name = self.environments[0].name
+        self.name = self.environments[0].env.name
         self.num_workers = workers
 
     def initialize(self, seed):
         # group seed is given, the others are determined from it
         for i, environment in enumerate(self.environments):
-            environment.seed(seed + i)
+            environment.action_space.seed(seed + i)
 
     def start(self):
         """Used once to get the initial observations."""

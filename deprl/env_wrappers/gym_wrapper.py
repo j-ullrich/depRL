@@ -43,17 +43,17 @@ class GymWrapper(ExceptionWrapper):
         self.unwrapped.sim.render(*args, **kwargs)
 
     def muscle_lengths(self):
-        length = self.unwrapped.sim.data.actuator_length
+        length = self.unwrapped.mj_data.actuator_length
         return length
 
     def muscle_forces(self):
-        return self.unwrapped.sim.data.actuator_force
+        return self.unwrapped.mj_data.actuator_force
 
     def muscle_velocities(self):
-        return self.unwrapped.sim.data.actuator_velocity
+        return self.unwrapped.mj_data.actuator_velocity
 
     def muscle_activity(self):
-        return self.unwrapped.sim.data.act
+        return self.unwrapped.mj_data.act
 
     @property
     def _max_episode_steps(self):
